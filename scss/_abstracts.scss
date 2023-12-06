@@ -1,0 +1,93 @@
+/*partial oluşturuyoruz _ yzüünden compile edilmiyor*/
+
+/**FONTS**/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald:wght@500&display=swap");
+
+/**Variables**/
+$primary-font: "Oswald", sans-serif;
+$secondary-font: "Open Sans", sans-serif;
+$primary-color: #d3c019de; // #1b9992;
+$secondary-color: #0d1413;
+$date-color: #ababab; //FFB32
+$datetime-color: #ffb321; //FFB32
+$gray-color: #9f9f9f;
+$light-color: #efefef;
+$comment-color: #2ba335; // #1b9992;
+$detail-color: #af0404; // #1b9992;
+$info-color: rgb(77, 128, 223); // #1b9992;
+$general-transition: all 0.5s;
+/**UTILITIES**/
+/*
+.bg-dark {
+  background-color: $secondary-color;
+}
+.bg-light {
+  background-color: $light-color;
+}*/
+/*ust tarafın kısa hali*/
+.bg {
+  &-dark {
+    background-color: $secondary-color;
+  }
+  &-light {
+    background-color: $light-color;
+  }
+}
+.ml {
+  //ml-2 diye kullanacagız artık
+  &-2 {
+    margin-left: 2rem;
+  }
+}
+.m {
+  &-1 {
+    margin: 1rem;
+  }
+}
+/*tekrar etmemek adına helper classs yaratmaca*/
+.text-light {
+  color: $light-color;
+}
+.text-center {
+  text-align: center;
+}
+.text-primary {
+  //helper class direkt taga vermek yerine class vermek bootstrap gibi
+  color: $primary-color;
+}
+.text-black {
+  //helper class direkt taga vermek yerine class vermek bootstrap gibi
+  color: $secondary-color;
+}
+
+/*utilities son*/
+/**MIXINS**/
+@mixin flex-display($display, $align-item, $justify-content) {
+  display: $display;
+  align-items: $align-item;
+  justify-content: $justify-content;
+}
+
+@mixin media($screensize) {
+  @if ($screensize==xlarge) {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  }
+  @if ($screensize==large) {
+    @media (max-width: 992px) {
+      @content;
+    }
+  }
+  @if ($screensize==medium) {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @if ($screensize==small) {
+    @media (max-width: 576px) {
+      @content;
+    }
+  }
+}

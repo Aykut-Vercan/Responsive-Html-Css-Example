@@ -1,0 +1,226 @@
+/*BUTTONS**/
+.btn {
+  /**/
+  background-color: $light-color;
+  color: $primary-color;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  border: none;
+  outline: none;
+  letter-spacing: 2px;
+  transition: all 0.5s;
+  @include media(medium) {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+  }
+
+  &:hover {
+    background-color: $primary-color;
+    color: $light-color;
+  }
+  &-primary {
+    //.btn-primary
+    background-color: $primary-color;
+    color: $light-color;
+    &:hover {
+      //.btn-primary:hover
+      background-color: $light-color;
+      color: $primary-color;
+    }
+  }
+}
+/*BADGES**/
+.badge {
+  border: none;
+  padding: 0.2rem 2.4rem; //ilki yukardan asagı 2. sagdan soldan
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: $primary-color;
+  background-color: $gray-color;
+  margin: 5rem;
+  letter-spacing: 0.2rem;
+  &-tech {
+    background-color: $date-color;
+  }
+  &-game {
+    background-color: $comment-color;
+  }
+}
+
+/*RATING**/
+.rating {
+  position: absolute; //görsele göre ayarla
+  width: 3rem;
+  height: 3rem;
+  background-color: black;
+  color: $primary-color;
+  opacity: 0;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  margin: 1rem 1rem;
+  z-index: 100;
+  line-height: 3rem;
+  font-family: $primary-font;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+/*REVIEWS*/
+.review {
+  padding: 5rem;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-left: 10rem;
+  border: 1px solid $primary-color;
+  border-left: 1px solid $primary-color;
+  border-bottom: 1px solid $primary-color;
+  transform: skew(-28deg);
+  @include media(large) {
+    transform: skew(0deg);
+    border: none;
+    line-height: 1.4;
+    margin-left: 0;
+  }
+  //parent elemanın içindeki herşeyi secmek
+  & > * {
+    transform: skew(28deg);
+    @include media(large) {
+      transform: skew(0deg);
+      border: none;
+      line-height: 1.2;
+      margin-left: 0;
+    }
+  }
+
+  &-tags {
+    font-size: 1.5rem;
+    color: $primary-color;
+    text-transform: uppercase;
+  }
+  &-text {
+    margin: 1rem 0;
+  }
+  &-user {
+    display: flex;
+    align-items: center;
+    @include media(small) {
+      flex-direction: column;
+    }
+    img {
+      width: 8rem;
+      margin-right: 3rem;
+      border-radius: 50%;
+      @include media(large) {
+        width: 3rem;
+      }
+    }
+    &-detail {
+      font-family: $primary-font;
+      margin-right: 3rem;
+      .review-user-name {
+        color: $comment-color;
+      }
+      .review-user-date {
+        color: $datetime-color;
+      }
+    }
+    &-platform {
+      display: flex;
+      @include media(small) {
+        display: none;
+      }
+      :not(:last-child) {
+        color: $primary-color;
+      }
+      .fab {
+        margin: 0 1rem;
+      }
+    }
+    &-rating {
+      margin-left: auto;
+      @include media(small) {
+        margin-left: 0;
+      }
+      .checkhed {
+        color: gold;
+      }
+    }
+  }
+}
+
+/*cards*/
+.card {
+  height: 40rem;
+  perspective: 1000px;
+  @include media(large) {
+    height: 32rem;
+  }
+  @include media(medium) {
+    height: 26rem;
+  }
+  @include media(small) {
+    height: 13rem;
+  }
+  &-inner {
+    position: relative; /*inner clası kendini card clasına göre ayarlasın diye*/
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  &-front,
+  &-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 1s;
+    backface-visibility: hidden; /*sadece bi tarafı gocukuyor*/
+  }
+  .card-front {
+    background-color: $primary-color;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h4 {
+      color: $datetime-color;
+      @include media(medium) {
+        font-size: 1rem;
+        line-height: 1.6rem;
+        
+      }
+    }
+  }
+  .card-back {
+    background-color: $secondary-color;
+    transform: rotateY(180deg);
+    display: table;
+    &-content {
+      display: table-cell;
+      vertical-align: middle;
+      p {
+        font-size: 1.8rem;
+        font-family: $primary-font;
+        @include media(medium) {
+          font-size: 1rem;
+        }
+      }
+      a {
+        transition: $general-transition;
+        :hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  &:hover .card-front {
+    transform: rotateY(180deg);
+  }
+
+  &:hover .card-back {
+    transform: none;
+  }
+}
